@@ -1,4 +1,5 @@
 #include "numericalmethods.h"
+
 namespace NumericalMethods {
 
 template<typename T>
@@ -11,7 +12,7 @@ template<typename T>
 T TrapezoidalRule<T>::result() const { return m_integral; }
 
 template<typename T>
-void TrapezoidalRule<T>::clean()
+void TrapezoidalRule<T>::resetValues()
 {
     m_lastSample   = static_cast<T>(0);
     m_lastInterval = static_cast<T>(0);
