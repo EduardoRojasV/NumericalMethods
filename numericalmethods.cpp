@@ -1,21 +1,25 @@
 #include "numericalmethods.h"
 namespace NumericalMethods {
 
-TrapezoidalRule::TrapezoidalRule(): m_lastSample(0.0), m_lastInterval(0.0), m_integral(0.0)
+template<typename T>
+TrapezoidalRule<T>::TrapezoidalRule(): m_lastSample(T()), m_lastInterval(T()), m_integral(T())
 {
 
 }
 
-double TrapezoidalRule::result() const { return m_integral; }
+template<typename T>
+T TrapezoidalRule<T>::result() const { return m_integral; }
 
-void TrapezoidalRule::clean()
+template<typename T>
+void TrapezoidalRule<T>::clean()
 {
-    m_lastSample    = 0.0;
-    m_lastInterval = 0.0;
-    m_integral     = 0.0;
+    m_lastSample   = static_cast<T>(0);
+    m_lastInterval = static_cast<T>(0);
+    m_integral     = static_cast<T>(0);
 }
 
-void TrapezoidalRule::integrate(const T newSample, const T newInterval)
+template<typename T>
+void TrapezoidalRule<T>::integrate(const T newSample, const T newInterval)
 {
     double area = ( (newInterval - m_lastInterval) * (m_lastSample + newSample) ) / 2;
 
@@ -23,7 +27,5 @@ void TrapezoidalRule::integrate(const T newSample, const T newInterval)
     m_lastInterval = newInterval;
     m_lastSample    = newSample;
 }
-
-
 
 }

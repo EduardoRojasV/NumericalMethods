@@ -1,10 +1,11 @@
 #ifndef NUMERICALMETHODS_H
 #define NUMERICALMETHODS_H
 
-// Authors:
-//  Jose Eduardo Rojas Vera <joseeduardo2511@outlook.es> / GLINTEC
-//
-// This work is licensed under the terms of the GNU GPL, version 2.
+/**
+ * @author Jose Eduardo Rojas Vera <joseeduardo2511@outlook.es> / GLINTEC
+ * @date
+ *   This work is licensed under the terms of the GNU GPL, version 2.
+*/
 
 namespace NumericalMethods {
 
@@ -18,16 +19,18 @@ namespace NumericalMethods {
  * @return el área valor de la integral
 */
 
+template<typename T>
 class TrapezoidalRule
 {
-    double m_lastSample;
-    double m_lastInterval;
-    double m_integral;
+    T m_lastSample;
+    T m_lastInterval;
+    T m_integral;
 public:
     TrapezoidalRule();
-    double result() const;
+
+    T result() const;
     void clean();
-    void integrate(const double newSample, const double newInterval);
+    void integrate(const T newSample, const T newInterval);
 };
 
 // *** Metódos numericos para derivación
